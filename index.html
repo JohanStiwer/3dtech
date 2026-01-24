@@ -1,132 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3dTech | Impresiones 3D Profesionales</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Tech | Impresiones 3D Profesionales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<body class="bg-gray-50 text-gray-800">
+  <body class="bg-gray-50 text-gray-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- LOGO + NOMBRE -->
+        <a href="#" class="flex items-center space-x-3">
+          <img src="logo.png" alt="Logo 3dTech" class="h-10 w-auto" />
+          <span class="text-2xl font-bold text-indigo-600"> 3dTech </span>
+        </a>
 
-  <!-- NAVBAR -->
-  <nav class="bg-white shadow-sm fixed w-full z-10">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-indigo-600">3dTech</h1>
-      <div class="space-x-6 hidden md:block">
-        <a href="#productos" class="hover:text-indigo-600">Productos</a>
-        <a href="#como-funciona" class="hover:text-indigo-600">Cómo funciona</a>
-        <a href="#contacto" class="hover:text-indigo-600">Contacto</a>
+        <!-- LINKS -->
+        <div class="space-x-6 hidden md:block">
+          <a href="#productos" class="hover:text-indigo-600">Productos</a>
+          <a href="#como-funciona" class="hover:text-indigo-600"
+            >Cómo funciona</a
+          >
+          <a href="#contacto" class="hover:text-indigo-600">Contacto</a>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- HERO -->
-  <section class="pt-28 pb-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
-          Impresiones 3D<br>precisas y personalizadas
-        </h2>
-        <p class="text-lg mb-8">
-          En 3dTech transformamos ideas en objetos reales mediante impresión 3D
-          de alta calidad en filamento plástico.
+    <!-- HERO -->
+    <section
+      class="pt-28 pb-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center"
+      >
+        <div>
+          <!--TITULO 3D Tech - Impresiones 3D Profesionales -->
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+            Impresiones 3D<br />precisas y personalizadas
+          </h2>
+          <p class="text-lg mb-8">
+            En 3dTech transformamos ideas en objetos reales mediante impresión
+            3D de alta calidad en filamento plástico.
+          </p>
+          <a
+            href="#contacto"
+            class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
+          >
+            Cotiza por WhatsApp
+          </a>
+        </div>
+        <div class="hidden md:block">
+          <img
+            src="https://images.unsplash.com/photo-1581091870627-3a11c1b1a1d2"
+            alt="Impresión 3D"
+            class="rounded-xl shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="productos" class="py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <h3 class="text-3xl font-bold text-center mb-12">Nuestros productos</h3>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Card -->
+          <div class="bg-white rounded-xl shadow p-6 text-center">
+            <h4 class="text-xl font-semibold mb-2">Llaveros personalizados</h4>
+            <p class="text-gray-600">
+              Llaveros con logos, nombres o diseños conmemorativos.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-6 text-center">
+            <h4 class="text-xl font-semibold mb-2">Imanes para nevera</h4>
+            <p class="text-gray-600">
+              Ideales para recuerdos, marcas o decoración.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-6 text-center">
+            <h4 class="text-xl font-semibold mb-2">Piezas personalizadas</h4>
+            <p class="text-gray-600">Diseños a medida según tu necesidad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como-funciona" class="bg-gray-100 py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <h3 class="text-3xl font-bold text-center mb-12">¿Cómo funciona?</h3>
+
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          <div>
+            <span class="text-indigo-600 text-3xl font-bold">1</span>
+            <p class="mt-2">Nos cuentas tu idea</p>
+          </div>
+          <div>
+            <span class="text-indigo-600 text-3xl font-bold">2</span>
+            <p class="mt-2">Diseñamos el modelo 3D</p>
+          </div>
+          <div>
+            <span class="text-indigo-600 text-3xl font-bold">3</span>
+            <p class="mt-2">Imprimimos en filamento</p>
+          </div>
+          <div>
+            <span class="text-indigo-600 text-3xl font-bold">4</span>
+            <p class="mt-2">Entrega del producto</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h3 class="text-3xl font-bold mb-6">¿Listo para imprimir tu idea?</h3>
+        <p class="mb-8 text-gray-600">
+          Escríbenos y recibe una cotización rápida y personalizada.
         </p>
         <a
-          href="#contacto"
-          class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
+          href="https://wa.me/573000000000"
+          target="_blank"
+          class="bg-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow hover:bg-green-600 transition"
         >
-          Cotiza por WhatsApp
+          Contactar por WhatsApp
         </a>
       </div>
-      <div class="hidden md:block">
-        <img
-          src="https://images.unsplash.com/photo-1581091870627-3a11c1b1a1d2"
-          alt="Impresión 3D"
-          class="rounded-xl shadow-lg"
-        />
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRODUCTOS -->
-  <section id="productos" class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-12">Nuestros productos</h3>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Card -->
-        <div class="bg-white rounded-xl shadow p-6 text-center">
-          <h4 class="text-xl font-semibold mb-2">Llaveros personalizados</h4>
-          <p class="text-gray-600">
-            Llaveros con logos, nombres o diseños conmemorativos.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6 text-center">
-          <h4 class="text-xl font-semibold mb-2">Imanes para nevera</h4>
-          <p class="text-gray-600">
-            Ideales para recuerdos, marcas o decoración.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6 text-center">
-          <h4 class="text-xl font-semibold mb-2">Piezas personalizadas</h4>
-          <p class="text-gray-600">
-            Diseños a medida según tu necesidad.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CÓMO FUNCIONA -->
-  <section id="como-funciona" class="bg-gray-100 py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <h3 class="text-3xl font-bold text-center mb-12">¿Cómo funciona?</h3>
-
-      <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div>
-          <span class="text-indigo-600 text-3xl font-bold">1</span>
-          <p class="mt-2">Nos cuentas tu idea</p>
-        </div>
-        <div>
-          <span class="text-indigo-600 text-3xl font-bold">2</span>
-          <p class="mt-2">Diseñamos el modelo 3D</p>
-        </div>
-        <div>
-          <span class="text-indigo-600 text-3xl font-bold">3</span>
-          <p class="mt-2">Imprimimos en filamento</p>
-        </div>
-        <div>
-          <span class="text-indigo-600 text-3xl font-bold">4</span>
-          <p class="mt-2">Entrega del producto</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="py-20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-6">¿Listo para imprimir tu idea?</h3>
-      <p class="mb-8 text-gray-600">
-        Escríbenos y recibe una cotización rápida y personalizada.
-      </p>
-      <a
-        href="https://wa.me/573000000000"
-        target="_blank"
-        class="bg-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow hover:bg-green-600 transition"
-      >
-        Contactar por WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-300 py-6 text-center">
-    <p>© 2026 3dTech. Todos los derechos reservados.</p>
-  </footer>
-
-</body>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 py-6 text-center">
+      <p>© 2026 3dTech. Todos los derechos reservados.</p>
+    </footer>
+  </body>
 </html>
