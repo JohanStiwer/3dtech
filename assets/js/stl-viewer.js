@@ -1,62 +1,105 @@
-import * as THREE from "three";
-import { STLLoader } from "https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/loaders/STLLoader.js";
+import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
+import { STLLoader } from "https://unpkg.com/three@0.158.0/examples/jsm/loaders/STLLoader.js";
 
+let scene, camera, renderer;
+let mesh;
+let material;
+
+/* ===============================
+   FUNCIÓN GLOBAL PARA EL HTML
+================================ */
+function changeColor(hexColor) {
+  if (material) {
+    material.color.set(hexColor);
+  }
+}
+window.changeColor = changeColor;
+
+/* ===============================
+   ESCENA
+================================ */
+scene = new THREE.Scene();
+
+/* ===============================
+   CÁMARA
+================================ */
+camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+camera.position.set(0, 0, 80);
+camera.lookAt(0, 0, 0);
+
+/* ===============================
+   RENDERER (FONDO TRANSPARENTE)
+================================ */
+renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: true,
+});
+renderer.setClearColor(0x000000, 0);
+renderer.setSize(300, 200);
+
+/* ===============================
+   CONTENEDOR HTML
+================================ */
 const container = document.getElementById("llavero-viewer");
+container.appendChild(renderer.domElement);
 
-if (!container) {
-  console.error("No se encontró el div #llavero-viewer");
-} else {
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xf3f4f6);
+/* ===============================
+   LUCES
+================================ */
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 10, 7);
+scene.add(directionalLight);
 
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    container.clientWidth / container.clientHeight,
-    0.1,
-    1000
-  );
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  container.appendChild(renderer.domElement);
+/* ===============================
+   CARGA DEL STL
+================================ */
+const loader = new STLLoader();
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-
-  const light = new THREE.DirectionalLight(0xffffff, 0.8);
-  light.position.set(5, 5, 5);
-  scene.add(light);
-
-  const loader = new STLLoader();
-
-  loader.load("assets/models/demo.stl", (geometry) => {
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x6366f1,
-      metalness: 0.2,
-      roughness: 0.8,
-    });
-    const mesh = new THREE.Mesh(geometry, material);
-    // 1️⃣ Centrar geometría
-    geometry.center();
-    // 2️⃣ Escalar automáticamente
-    const box = new THREE.Box3().setFromObject(mesh);
-    const size = new THREE.Vector3();
-    box.getSize(size);
-    const scale = 40 / Math.max(size.x, size.y, size.z);
-    mesh.scale.setScalar(scale);
-    // 3️⃣ Rotación inicial (UNA SOLA VEZ)
-    mesh.rotation.x = -Math.PI / 4;
-    mesh.rotation.y = Math.PI / 4;
-    // 4️⃣ Cámara
-    camera.position.set(0, 0, 80);
-    camera.lookAt(0, 0, 0);
-    scene.add(mesh);
-    // 5️⃣ Animación limpia (solo suma)
-    function animate() {
-      requestAnimationFrame(animate);
-      mesh.rotation.y += 0.01;
-      mesh.rotation.x += 0.005;
-      renderer.render(scene, camera);
-    }
-    animate();
+loader.load("assets/models/demo.stl", (geometry) => {
+  material = new THREE.MeshStandardMaterial({
+    color: 0x6366f1,
+    metalness: 0.2,
+    roughness: 0.8,
   });
+
+  mesh = new THREE.Mesh(geometry, material);
+
+  // Centrar geometría
+  geometry.center();
+
+  // Escalar automáticamente
+  const box = new THREE.Box3().setFromObject(mesh);
+  const size = new THREE.Vector3();
+  box.getSize(size);
+
+  const scale = 40 / Math.max(size.x, size.y, size.z);
+  mesh.scale.setScalar(scale);
+
+  // Asegurar centrado visual
+  mesh.position.set(0, 0, 0);
+
+  // Rotación inicial (vista 3D clara)
+  mesh.rotation.x = -Math.PI / 4;
+  mesh.rotation.y = Math.PI / 4;
+
+  scene.add(mesh);
+
+  animate();
+});
+
+/* ===============================
+   ANIMACIÓN
+================================ */
+function animate() {
+  requestAnimationFrame(animate);
+
+  if (mesh) {
+    mesh.rotation.y += 0.01;
+    mesh.rotation.x += 0.005;
+  }
+
+  renderer.render(scene, camera);
 }
