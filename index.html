@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Tech | Impresiones 3D Profesionales</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js"
+        }
+      }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
@@ -15,7 +23,11 @@
       >
         <!-- LOGO + NOMBRE -->
         <a href="#" class="flex items-center space-x-3">
-          <img src="assets/images/logo.png" alt="Logo 3dTech" class="h-10 w-auto" />
+          <img
+            src="assets/images/logo.png"
+            alt="Logo 3dTech"
+            class="h-10 w-auto"
+          />
           <span class="text-2xl font-bold text-indigo-600"> 3dTech </span>
         </a>
 
@@ -69,15 +81,13 @@
         <h3 class="text-3xl font-bold text-center mb-12">Nuestros productos</h3>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <!-- CARD 1 -->
+          <!-- CARD 1: LLAVEROS (STL) -->
           <div
             class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
           >
-            <img
-              src="assets/images/llaveros_4_3.jpg"
-              alt="Llaveros personalizados impresos en 3D"
-              class="w-full h-48 object-cover"
-            />
+            <!-- VISOR STL -->
+            <div id="llavero-viewer" class="w-full h-48 bg-gray-100"></div>
+
             <div class="p-6 text-center">
               <h4 class="text-xl font-semibold mb-2">
                 Llaveros personalizados
@@ -170,5 +180,6 @@
     <footer class="bg-gray-900 text-gray-300 py-6 text-center">
       <p>© 2026 3dTech. Todos los derechos reservados.</p>
     </footer>
+    <script type="module" src="assets/js/stl-viewer.js"></script>
   </body>
 </html>
