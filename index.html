@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -86,7 +86,10 @@
             class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
           >
             <!-- VISOR STL -->
-            <div id="llavero-viewer" class="w-full h-48 bg-gray-100"></div>
+            <div
+              class="viewer w-full h-48 bg-gray-100"
+              data-model="assets/models/demo.stl"
+            ></div>
 
             <div class="p-6 text-center">
               <h4 class="text-xl font-semibold mb-2">
@@ -99,25 +102,25 @@
               <div class="mt-4 flex justify-center gap-3">
                 <button
                   class="w-6 h-6 rounded-full bg-indigo-500 border"
-                  onclick="changeColor('#6366f1')"
+                  onclick="changeViewerColor(this, '#6366F1')"
                   title="Morado"
                 ></button>
 
                 <button
                   class="w-6 h-6 rounded-full bg-red-500 border"
-                  onclick="changeColor('#ef4444')"
+                  onclick="changeViewerColor(this, '#EF4444')"
                   title="Rojo"
                 ></button>
 
                 <button
                   class="w-6 h-6 rounded-full bg-green-500 border"
-                  onclick="changeColor('#22c55e')"
+                  onclick="changeViewerColor(this, '#22C55E')"
                   title="Verde"
                 ></button>
 
                 <button
                   class="w-6 h-6 rounded-full bg-gray-800 border"
-                  onclick="changeColor('#1f2937')"
+                  onclick="changeViewerColor(this, '#1F2937')"
                   title="Negro"
                 ></button>
               </div>
@@ -128,16 +131,38 @@
           <div
             class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
           >
-            <img
-              src="assets/images/imanes_4_3.JPG"
-              alt="Imanes para nevera impresos en 3D"
-              class="w-full h-48 object-cover"
-            />
+            <div
+              class="viewer w-full h-48 bg-gray-100"
+              data-model="assets/models/cubone.stl"
+            ></div>
             <div class="p-6 text-center">
               <h4 class="text-xl font-semibold mb-2">Imanes para nevera</h4>
               <p class="text-gray-600">
                 Ideales para recuerdos, marcas o decoración.
               </p>
+              <!-- Selector de colores -->
+              <div class="mt-4 flex justify-center gap-3">
+                <button
+                  class="w-6 h-6 rounded-full bg-indigo-500 border"
+                  onclick="changeViewerColor(this, '#6366F1')"
+                  title="Morado"
+                ></button>
+                <button
+                  class="w-6 h-6 rounded-full bg-red-500 border"
+                  onclick="changeViewerColor(this, '#EF4444')"
+                  title="Rojo"
+                ></button>
+                <button
+                  class="w-6 h-6 rounded-full bg-green-500 border"
+                  onclick="changeViewerColor(this, '#22C55E')"
+                  title="Verde"
+                ></button>
+                <button
+                  class="w-6 h-6 rounded-full bg-gray-800 border"
+                  onclick="changeViewerColor(this, '#1F2937')"
+                  title="Negro"
+                ></button>
+              </div>
             </div>
           </div>
 
@@ -145,14 +170,39 @@
           <div
             class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
           >
-            <img
-              src="assets/images/piezas_perzonalisadas_4_3.JPG"
-              alt="Piezas personalizadas impresas en 3D"
-              class="w-full h-48 object-cover"
-            />
+            <div
+              class="viewer w-full h-48 bg-gray-100"
+              data-model="assets/models/mew.stl"
+            ></div>
             <div class="p-6 text-center">
               <h4 class="text-xl font-semibold mb-2">Piezas personalizadas</h4>
               <p class="text-gray-600">Diseños a medida según tu necesidad.</p>
+              <!-- Selector de colores -->
+              <div class="mt-4 flex justify-center gap-3">
+                <button
+                  class="w-6 h-6 rounded-full bg-indigo-500 border"
+                  onclick="changeViewerColor(this, '#6366F1')"
+                  title="Morado"
+                ></button>
+
+                <button
+                  class="w-6 h-6 rounded-full bg-red-500 border"
+                  onclick="changeViewerColor(this, '#EF4444')"
+                  title="Rojo"
+                ></button>
+
+                <button
+                  class="w-6 h-6 rounded-full bg-green-500 border"
+                  onclick="changeViewerColor(this, '#22C55E')"
+                  title="Verde"
+                ></button>
+
+                <button
+                  class="w-6 h-6 rounded-full bg-gray-800 border"
+                  onclick="changeViewerColor(this, '#1F2937')"
+                  title="Negro"
+                ></button>
+              </div>
             </div>
           </div>
         </div>
@@ -193,7 +243,7 @@
           Escríbenos y recibe una cotización rápida y personalizada.
         </p>
         <a
-          href="https://wa.me/573000000000"
+          href="https://wa.me/573026978100"
           target="_blank"
           class="bg-green-500 text-white font-semibold px-8 py-4 rounded-lg shadow hover:bg-green-600 transition"
         >

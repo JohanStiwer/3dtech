@@ -1,105 +1,93 @@
 import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
 import { STLLoader } from "https://unpkg.com/three@0.158.0/examples/jsm/loaders/STLLoader.js";
 
-let scene, camera, renderer;
-let mesh;
-let material;
+/* ===============================
+   MAPA DE VIEWERS
+================================ */
+const viewers = new Map();
 
 /* ===============================
-   FUNCIÓN GLOBAL PARA EL HTML
+   FUNCIÓN GLOBAL PARA CAMBIAR COLOR
 ================================ */
-function changeColor(hexColor) {
-  if (material) {
-    material.color.set(hexColor);
+function changeViewerColor(button, hexColor) {
+  const card = button.closest(".bg-white");
+  const viewer = card.querySelector(".viewer");
+
+  const viewerData = viewers.get(viewer);
+  if (viewerData) {
+    viewerData.material.color.set(hexColor);
   }
 }
-window.changeColor = changeColor;
+window.changeViewerColor = changeViewerColor;
 
 /* ===============================
-   ESCENA
+   CREAR VIEWER
 ================================ */
-scene = new THREE.Scene();
+function createViewer(container, modelPath) {
+  const scene = new THREE.Scene();
 
-/* ===============================
-   CÁMARA
-================================ */
-camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-camera.position.set(0, 0, 80);
-camera.lookAt(0, 0, 0);
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+  camera.position.set(0, 0, 80);
+  camera.lookAt(0, 0, 0);
 
-/* ===============================
-   RENDERER (FONDO TRANSPARENTE)
-================================ */
-renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  alpha: true,
-});
-renderer.setClearColor(0x000000, 0);
-renderer.setSize(300, 200);
-
-/* ===============================
-   CONTENEDOR HTML
-================================ */
-const container = document.getElementById("llavero-viewer");
-container.appendChild(renderer.domElement);
-
-/* ===============================
-   LUCES
-================================ */
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(5, 10, 7);
-scene.add(directionalLight);
-
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-scene.add(ambientLight);
-
-/* ===============================
-   CARGA DEL STL
-================================ */
-const loader = new STLLoader();
-
-loader.load("assets/models/demo.stl", (geometry) => {
-  material = new THREE.MeshStandardMaterial({
-    color: 0x6366f1,
-    metalness: 0.2,
-    roughness: 0.8,
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true,
   });
+  renderer.setClearColor(0x000000, 0);
+  renderer.setSize(container.clientWidth, container.clientHeight);
 
-  mesh = new THREE.Mesh(geometry, material);
+  container.appendChild(renderer.domElement);
 
-  // Centrar geometría
-  geometry.center();
+  // Luces
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
 
-  // Escalar automáticamente
-  const box = new THREE.Box3().setFromObject(mesh);
-  const size = new THREE.Vector3();
-  box.getSize(size);
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(5, 10, 7);
+  scene.add(light);
 
-  const scale = 40 / Math.max(size.x, size.y, size.z);
-  mesh.scale.setScalar(scale);
+  const loader = new STLLoader();
 
-  // Asegurar centrado visual
-  mesh.position.set(0, 0, 0);
+  loader.load(modelPath, (geometry) => {
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x6366f1,
+      metalness: 0.2,
+      roughness: 0.8,
+    });
 
-  // Rotación inicial (vista 3D clara)
-  mesh.rotation.x = -Math.PI / 4;
-  mesh.rotation.y = Math.PI / 4;
+    const mesh = new THREE.Mesh(geometry, material);
 
-  scene.add(mesh);
+    geometry.center();
 
-  animate();
-});
+    const box = new THREE.Box3().setFromObject(mesh);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+
+    const scale = 40 / Math.max(size.x, size.y, size.z);
+    mesh.scale.setScalar(scale);
+
+    mesh.rotation.x = -Math.PI / 4;
+    mesh.rotation.y = Math.PI / 4;
+
+    scene.add(mesh);
+
+    viewers.set(container, { material });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      mesh.rotation.y += 0.01;
+      mesh.rotation.x += 0.005;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  });
+}
 
 /* ===============================
-   ANIMACIÓN
+   INICIALIZAR TODOS LOS VIEWERS
 ================================ */
-function animate() {
-  requestAnimationFrame(animate);
-
-  if (mesh) {
-    mesh.rotation.y += 0.01;
-    mesh.rotation.x += 0.005;
-  }
-
-  renderer.render(scene, camera);
-}
+document.querySelectorAll(".viewer").forEach((viewer) => {
+  const model = viewer.dataset.model;
+  createViewer(viewer, model);
+});
