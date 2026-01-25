@@ -48,6 +48,18 @@ function createViewer(container, modelPath) {
     antialias: true,
     alpha: true,
   });
+  function resizeRenderer() {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+
+  resizeRenderer();
+  window.addEventListener("resize", resizeRenderer);
+
   renderer.setClearColor(0x000000, 0);
   renderer.setSize(container.clientWidth, container.clientHeight);
 
