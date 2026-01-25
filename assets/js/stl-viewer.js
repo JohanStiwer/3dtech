@@ -2,6 +2,21 @@ import * as THREE from "https://unpkg.com/three@0.158.0/build/three.module.js";
 import { STLLoader } from "https://unpkg.com/three@0.158.0/examples/jsm/loaders/STLLoader.js";
 
 /* ===============================
+   ORIENTACIÓN DE LOS MODELOS 
+================================ */
+const MODEL_ORIENTATIONS = {
+  "demo.stl": {
+    rotation: [0, 0, 0],
+  },
+  "cubone.stl": {
+    rotation: [Math.PI / 2, Math.PI, 2],
+  },
+  "mew.stl": {
+    rotation: [Math.PI / 2, Math.PI, 0],
+  },
+};
+
+/* ===============================
    MAPA DE VIEWERS
 ================================ */
 const viewers = new Map();
@@ -27,9 +42,8 @@ function createViewer(container, modelPath) {
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-  camera.position.set(0, 0, 80);
+  camera.position.set(0, 15, 80);
   camera.lookAt(0, 0, 0);
-
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
@@ -54,6 +68,8 @@ function createViewer(container, modelPath) {
       metalness: 0.2,
       roughness: 0.8,
     });
+    const pivot = new THREE.Group();
+    scene.add(pivot);
 
     const mesh = new THREE.Mesh(geometry, material);
 
@@ -66,17 +82,34 @@ function createViewer(container, modelPath) {
     const scale = 40 / Math.max(size.x, size.y, size.z);
     mesh.scale.setScalar(scale);
 
-    mesh.rotation.x = -Math.PI / 4;
-    mesh.rotation.y = Math.PI / 4;
+    const modelName = modelPath.split("/").pop();
+    const orientation = MODEL_ORIENTATIONS[modelName];
 
-    scene.add(mesh);
+    if (orientation) {
+      mesh.rotation.set(
+        orientation.rotation[0],
+        orientation.rotation[1],
+        orientation.rotation[2],
+      );
+    } else {
+      mesh.rotation.set(0, 0, 0);
+    }
+
+    pivot.add(mesh);
+
+    const base = new THREE.Mesh(
+      new THREE.CircleGeometry(20, 64),
+      new THREE.MeshBasicMaterial({ visible: false }),
+    );
+    base.rotation.x = -Math.PI / 2;
+    scene.add(base);
 
     viewers.set(container, { material });
 
     function animate() {
       requestAnimationFrame(animate);
-      mesh.rotation.y += 0.01;
-      mesh.rotation.x += 0.005;
+      const ROTATION_SPEED = 0.01; // suave y profesional
+      pivot.rotation.y += ROTATION_SPEED;
       renderer.render(scene, camera);
     }
 
