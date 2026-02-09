@@ -15,6 +15,16 @@
       <div
         class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
       >
+        <!-- BOTÓN MENÚ -->
+        <button
+          id="openMenu"
+          class="text-indigo-600 text-2xl focus:outline-none"
+          title="Abrir menú de productos"
+        >
+          ☰
+        </button>
+
+        <!-- LOGO -->
         <a href="index.html" class="flex items-center space-x-3">
           <img
             src="assets/images/logo.png"
@@ -24,10 +34,9 @@
           <span class="text-2xl font-bold text-indigo-600">3D TECH</span>
         </a>
 
+        <!-- LINKS -->
         <div class="space-x-6 hidden md:block">
-          <a href="index.html#productos" class="hover:text-indigo-600"
-            >Inicio</a
-          >
+          <a href="index.html" class="hover:text-indigo-600">Inicio</a>
           <a href="#catalogo" class="hover:text-indigo-600">Productos</a>
           <a href="index.html#contacto" class="hover:text-indigo-600"
             >Contacto</a
@@ -35,6 +44,94 @@
         </div>
       </div>
     </nav>
+
+    <!-- OVERLAY -->
+    <div
+      id="menuOverlay"
+      class="fixed inset-0 bg-black bg-opacity-40 hidden z-20"
+    ></div>
+
+    <!-- SIDEBAR DRAWER -->
+    <aside
+      id="sideMenu"
+      class="fixed top-0 left-0 h-full w-72 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 z-30 p-6 flex flex-col justify-between"
+    >
+      <!-- MENÚ -->
+      <div>
+        <div class="flex justify-between items-center mb-8">
+          <h3 class="text-lg font-bold">Menú</h3>
+          <button id="closeMenu" class="text-gray-500 text-xl">✕</button>
+        </div>
+
+        <nav class="space-y-4 text-base">
+          <a href="index.html" class="block font-medium hover:text-indigo-600">
+            Inicio
+          </a>
+
+          <!-- CATÁLOGO -->
+          <div>
+            <button
+              onclick="toggleCatalogMenu()"
+              class="w-full flex justify-between items-center font-medium hover:text-indigo-600"
+            >
+              Catálogo
+              <span id="catalogArrow">▸</span>
+            </button>
+
+            <div id="catalogSubmenu" class="ml-4 mt-2 space-y-2 hidden text-sm">
+              <button
+                onclick="
+                  renderProducts('all');
+                  closeSideMenu();
+                "
+                class="block hover:text-indigo-600"
+              >
+                Todos los productos
+              </button>
+
+              <a href="products.html" class="block hover:text-indigo-600">
+                Ver catálogo completo
+              </a>
+            </div>
+          </div>
+
+          <a
+            href="index.html#contacto"
+            class="block font-medium hover:text-indigo-600"
+          >
+            Contáctate con nosotros
+          </a>
+        </nav>
+      </div>
+
+      <!-- REDES -->
+      <div class="pt-6 border-t">
+        <p class="text-sm text-gray-500 mb-3">Síguenos</p>
+        <div class="flex gap-4">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            class="hover:text-indigo-600"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://wa.me/573026978100"
+            target="_blank"
+            class="hover:text-green-600"
+          >
+            WhatsApp
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            class="hover:text-blue-600"
+          >
+            Facebook
+          </a>
+        </div>
+      </div>
+    </aside>
 
     <!-- HEADER -->
     <section
@@ -45,8 +142,7 @@
           Catálogo de productos 3D
         </h1>
         <p class="text-lg max-w-2xl mx-auto">
-          Explora nuestros productos por nicho y cotiza directamente por
-          WhatsApp.
+          Explora nuestros productos y cotiza directamente por WhatsApp.
         </p>
       </div>
     </section>
@@ -54,36 +150,10 @@
     <!-- CATÁLOGO -->
     <section id="catalogo" class="py-20">
       <div class="max-w-7xl mx-auto px-6">
-        <!-- FILTROS -->
-        <div class="flex justify-center gap-4 mb-12 flex-wrap">
-          <button
-            class="filter-btn px-5 py-2 rounded-full bg-indigo-600 text-white font-semibold"
-            data-filter="all"
-          >
-            Todos
-          </button>
-          <button
-            class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-indigo-100"
-            data-filter="empresarial"
-          >
-            Empresarial
-          </button>
-          <button
-            class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-indigo-100"
-            data-filter="hogar"
-          >
-            Hogar
-          </button>
-          <button
-            class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-indigo-100"
-            data-filter="tecnico"
-          >
-            Técnico
-          </button>
-        </div>
-
-        <!-- GRID PRODUCTOS -->
-        <div id="products-grid" class="grid md:grid-cols-3 gap-8"></div>
+        <div
+          id="products-grid"
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        ></div>
       </div>
     </section>
 
@@ -92,28 +162,7 @@
       <p>© 2026 3D TECH. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT FILTRO -->
-    <script>
-
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const filter = btn.dataset.filter;
-
-          buttons.forEach((b) =>
-            b.classList.remove("bg-indigo-600", "text-white"),
-          );
-          btn.classList.add("bg-indigo-600", "text-white");
-
-          cards.forEach((card) => {
-            if (filter === "all" || card.dataset.nicho === filter) {
-              card.classList.remove("hidden");
-            } else {
-              card.classList.add("hidden");
-            }
-          });
-        });
-      });
-    </script>
-        <script type="module" src="assets/js/products.js"></script>
+    <!-- JS -->
+    <script type="module" src="assets/js/products.js"></script>
   </body>
 </html>

@@ -45,73 +45,95 @@ const products = [
 
 const grid = document.getElementById("products-grid");
 
-function renderProducts(filter = "all") {
+// ===============================
+// RENDER PRODUCTOS
+// ===============================
+window.renderProducts = function (filter = "all") {
   grid.innerHTML = "";
 
   products
     .filter((p) => filter === "all" || p.niche === filter)
     .forEach((product) => {
       const card = document.createElement("div");
+      card.id = product.name;
+
       card.className =
-        "product-card bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden";
+        "bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden";
 
       card.innerHTML = `
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-            class="w-full h-48 object-cover"
-          />
-
-          <div class="p-6 text-center">
-            <h3 class="text-xl font-semibold mb-2">
-              ${product.name}
-            </h3>
-
-            <p class="text-gray-600 mb-4">
-              ${product.description}
-            </p>
-
-            <a
-              href="https://wa.me/573026978100?text=${encodeURIComponent(product.whatsappText)}"
-              target="_blank"
-              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg
-                     font-semibold hover:bg-green-600 transition"
-            >
-              Cotizar por WhatsApp
-            </a>
-          </div>
-        `;
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-6 text-center">
+          <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
+          <p class="text-gray-600 mb-4">${product.description}</p>
+          <a
+            href="https://wa.me/573026978100?text=${encodeURIComponent(
+              product.whatsappText,
+            )}"
+            target="_blank"
+            class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg
+                   font-semibold hover:bg-green-600 transition"
+          >
+            Cotizar por WhatsApp
+          </a>
+        </div>
+      `;
       grid.appendChild(card);
     });
-}
+};
+
 renderProducts();
 
-const buttons = document.querySelectorAll(".filter-btn");
+// ===============================
+// SCROLL A PRODUCTO
+// ===============================
+window.scrollToProduct = function (productName) {
+  renderProducts("all");
 
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const filter = btn.dataset.filter;
-    buttons.forEach((b) => b.classList.remove("bg-indigo-600", "text-white"));
-    btn.classList.add("bg-indigo-600", "text-white");
-    renderProducts(filter);
-  });
+  setTimeout(() => {
+    const element = document.getElementById(productName);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+      element.classList.add("ring-2", "ring-indigo-500");
+
+      setTimeout(() => {
+        element.classList.remove("ring-2", "ring-indigo-500");
+      }, 1500);
+    }
+  }, 100);
+};
+
+// ===============================
+// SIDEBAR DRAWER
+// ===============================
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("menuOverlay");
+const openBtn = document.getElementById("openMenu");
+const closeBtn = document.getElementById("closeMenu");
+
+window.closeSideMenu = function () {
+  sideMenu.classList.add("-translate-x-full");
+  overlay.classList.add("hidden");
+};
+
+openBtn.addEventListener("click", () => {
+  sideMenu.classList.remove("-translate-x-full");
+  overlay.classList.remove("hidden");
 });
 
+closeBtn.addEventListener("click", closeSideMenu);
+overlay.addEventListener("click", closeSideMenu);
+
 // ===============================
-// FILTRO DESDE URL (?cat=)
+// SUBMENÚ CATÁLOGO
 // ===============================
-const params = new URLSearchParams(window.location.search);
-const categoryFromUrl = params.get("cat");
+const catalogSubmenu = document.getElementById("catalogSubmenu");
+const catalogArrow = document.getElementById("catalogArrow");
 
-if (categoryFromUrl) {
-  renderProducts(categoryFromUrl);
-
-  // Activar botón visualmente
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    btn.classList.remove("bg-indigo-600", "text-white");
-
-    if (btn.dataset.filter === categoryFromUrl) {
-      btn.classList.add("bg-indigo-600", "text-white");
-    }
-  });
-}
+window.toggleCatalogMenu = function () {
+  catalogSubmenu.classList.toggle("hidden");
+  catalogArrow.textContent = catalogArrow.textContent === "▸" ? "▾" : "▸";
+};
