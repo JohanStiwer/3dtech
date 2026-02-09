@@ -54,80 +54,166 @@
     <!-- SIDEBAR DRAWER -->
     <aside
       id="sideMenu"
-      class="fixed top-0 left-0 h-full w-72 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 z-30 p-6 flex flex-col justify-between"
+      class="fixed top-0 left-0 h-full w-72 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 z-30 p-6 flex flex-col"
     >
-      <!-- MENÚ -->
-      <div>
-        <div class="flex justify-between items-center mb-8">
-          <h3 class="text-lg font-bold">Menú</h3>
-          <button id="closeMenu" class="text-gray-500 text-xl">✕</button>
-        </div>
+      <!-- HEADER LOGO -->
+      <div class="flex items-center justify-between mb-10">
+        <a href="index.html" class="flex items-center gap-3">
+          <img
+            src="assets/images/logo.png"
+            alt="3D TECH logo"
+            class="h-10 w-10 object-contain"
+          />
+          <span class="text-lg font-bold tracking-wide">3D TECH</span>
+        </a>
 
-        <nav class="space-y-4 text-base">
-          <a href="index.html" class="block font-medium hover:text-indigo-600">
-            Inicio
-          </a>
-
-          <!-- CATÁLOGO -->
-          <div>
-            <button
-              onclick="toggleCatalogMenu()"
-              class="w-full flex justify-between items-center font-medium hover:text-indigo-600"
-            >
-              Catálogo
-              <span id="catalogArrow">▸</span>
-            </button>
-
-            <div id="catalogSubmenu" class="ml-4 mt-2 space-y-2 hidden text-sm">
-              <button
-                onclick="
-                  renderProducts('all');
-                  closeSideMenu();
-                "
-                class="block hover:text-indigo-600"
-              >
-                Todos los productos
-              </button>
-
-              <a href="products.html" class="block hover:text-indigo-600">
-                Ver catálogo completo
-              </a>
-            </div>
-          </div>
-
-          <a
-            href="index.html#contacto"
-            class="block font-medium hover:text-indigo-600"
-          >
-            Contáctate con nosotros
-          </a>
-        </nav>
+        <button id="closeMenu" class="text-gray-500 text-xl hover:text-black">
+          ✕
+        </button>
       </div>
 
-      <!-- REDES -->
+      <!-- NAV -->
+      <nav class="flex-1 space-y-5 text-base">
+        <a href="index.html" class="block font-medium hover:text-indigo-600">
+          Inicio
+        </a>
+
+        <!-- CATÁLOGO -->
+        <div>
+          <button
+            onclick="toggleCatalogMenu()"
+            class="w-full flex justify-between items-center font-medium hover:text-indigo-600"
+          >
+            Catálogo
+            <span id="catalogArrow">▸</span>
+          </button>
+
+          <div id="catalogSubmenu" class="ml-4 mt-3 space-y-2 hidden text-sm">
+            <button
+              onclick="
+                renderProducts('all');
+                closeSideMenu();
+              "
+              class="block hover:text-indigo-600"
+            >
+              Todos los productos
+            </button>
+
+            <a href="products.html" class="block hover:text-indigo-600">
+              Ver catálogo completo
+            </a>
+          </div>
+        </div>
+
+        <a
+          href="index.html#contacto"
+          class="block font-medium hover:text-indigo-600"
+        >
+          Contáctate con nosotros
+        </a>
+        <!-- REDES SOCIALES -->
+        <div class="pt-6 border-t">
+          <p class="text-sm text-gray-500 mb-4">Síguenos</p>
+
+          <div class="flex items-center gap-5">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              aria-label="Instagram"
+              class="text-gray-600 hover:text-pink-500 transition"
+            >
+              <!-- PEGA AQUÍ TU SVG DE INSTAGRAM -->
+              <!-- <svg>...</svg> -->
+            </a>
+
+            <!-- WhatsApp -->
+            <a
+              href="https://wa.me/573026978100"
+              target="_blank"
+              aria-label="WhatsApp"
+              class="text-gray-600 hover:text-green-500 transition"
+            >
+              <!-- PEGA AQUÍ TU SVG DE WHATSAPP -->
+              <!-- <svg>...</svg> -->
+            </a>
+
+            <!-- Facebook -->
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              aria-label="Facebook"
+              class="text-gray-600 hover:text-blue-600 transition"
+            >
+              <!-- PEGA AQUÍ TU SVG DE FACEBOOK -->
+              <!-- <svg>...</svg> -->
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!-- REDES SOCIALES -->
       <div class="pt-6 border-t">
-        <p class="text-sm text-gray-500 mb-3">Síguenos</p>
-        <div class="flex gap-4">
+        <p class="text-sm text-gray-500 mb-4">Síguenos</p>
+
+        <div class="flex items-center gap-5">
+          <!-- Instagram -->
           <a
             href="https://instagram.com"
             target="_blank"
-            class="hover:text-indigo-600"
+            aria-label="Instagram"
+            class="text-gray-500 hover:text-pink-500 transition"
           >
-            Instagram
+            <svg
+              class="w-6 h-6"
+              viewBox="-2 0 125 117.8931"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="m 41.758283,117.8931 c -10.260002,-1.90826 -18.447478,-8.15004 -23.800706,-18.144634 -2.677607,-4.99915 -2.86596,-7.2348 -2.86596,-34.01747 0,-26.782679 0.188353,-29.018328 2.86596,-34.017477 3.642626,-6.800863 8.982369,-12.140606 15.783232,-15.783232 4.999149,-2.677607 7.234798,-2.86596 34.017473,-2.86596 26.782675,0 29.018324,0.188353 34.017478,2.86596 6.80086,3.642626 12.1406,8.982369 15.78323,15.783232 2.67761,4.999149 2.86596,7.234798 2.86596,34.017477 0,26.78267 -0.18835,29.01832 -2.86596,34.01747 -3.67267,6.856964 -9.03594,12.191424 -15.78323,15.698464 -4.777303,2.4831 -7.994628,2.8164 -30.017478,3.10966 -13.566666,0.18065 -27.066666,-0.11792 -29.999999,-0.66349 z M 76.270256,92.091206 C 87.938344,88.604866 97.240228,74.046396 95.328133,62.263536 92.658727,45.813913 76.71922,34.807591 61.424949,38.85319 40.092718,44.495934 32.972548,69.682096 48.359617,85.069166 c 7.998581,7.99858 17.034179,10.27185 27.910639,7.02204 z m -14.191275,-8.29772 c -2.756949,-0.96632 -5.946511,-2.532 -7.087915,-3.47928 -6.139784,-5.09557 -7.778383,-17.48531 -3.286763,-24.85182 7.16709,-11.754414 26.512457,-11.07004 32.837732,1.16169 7.841522,15.16384 -6.663069,32.70736 -22.463054,27.16941 z M 99.705122,41.128379 c 2.072798,-2.497567 1.348798,-6.048798 -1.613508,-7.914321 -4.27513,-2.692278 -9.155008,2.715202 -7.154611,7.928153 0.95589,2.491007 6.696804,2.48195 8.768119,-0.01383 z"
+              />
+            </svg>
           </a>
+
+          <!-- WhatsApp -->
           <a
             href="https://wa.me/573026978100"
             target="_blank"
-            class="hover:text-green-600"
+            aria-label="WhatsApp"
+            class="text-gray-500 hover:text-green-500 transition"
           >
-            WhatsApp
+            <svg
+              class="w-6 h-6"
+              viewBox="-3 0 120 116.54122"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="m 14.341194,116.54122 c -4.257432,-1.50554 -4.5378333,-5.47533 -1.238973,-17.540802 2.880403,-10.53497 2.980991,-11.88842 1.200282,-16.15025 C 13.233529,80.291748 11.765884,74.516121 11.041069,70.015431 6.2806407,40.455873 27.282624,11.93591 57.241713,7.2765636 93.741567,1.5999746 125.80743,33.665836 120.13084,70.16569 c -3.73141,23.992528 -22.301782,42.39373 -46.683519,46.25823 -9.383036,1.48721 -20.445093,0.19743 -29.040343,-3.38596 -4.068226,-1.69606 -5.607928,-1.57411 -16,1.26722 -6.329643,1.73061 -12.652622,2.73577 -14.065784,2.23604 z M 89.711201,86.789468 c 3.524003,-2.36688 4.620021,-4.1035 4.933416,-7.81691 0.392214,-4.647335 0.207346,-4.853383 -6.967034,-7.765251 l -7.369939,-2.991239 -3.412817,4.055902 c -3.062791,3.639921 -3.811579,3.916893 -7.300832,2.700533 C 64.809136,73.304492 54.838597,64.684679 52.37977,60.090319 50.75969,57.063172 50.864364,56.308927 53.341606,53.159623 l 2.779754,-3.533884 -2.691324,-6.827944 c -3.546663,-8.997954 -3.520736,-8.965437 -7.148487,-8.965437 -1.865116,0 -4.535084,1.662576 -6.587977,4.1023 -7.044315,8.371694 -3.504947,21.176331 9.677046,35.009374 6.91946,7.261206 11.498609,10.290696 20.757955,13.733106 10.358668,3.85111 13.985045,3.87191 19.582628,0.11233 z"
+              />
+            </svg>
           </a>
+
+          <!-- Facebook -->
           <a
             href="https://facebook.com"
             target="_blank"
-            class="hover:text-blue-600"
+            aria-label="Facebook"
+            class="text-gray-500 hover:text-blue-600 transition"
           >
-            Facebook
+            <svg
+              class="w-6 h-6"
+              viewBox="-5 0 130 125"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M 22.527515,121.25416 18.424951,117.1516 V 76.023388 34.895186 l 4.102564,-4.102564 4.102564,-4.102564 h 41.128203 41.128208 l 4.10256,4.102564 4.10257,4.102564 V 76.023388 117.1516 l -4.10257,4.10256 c -3.8908,3.8908 -4.64786,4.10257 -14.666666,4.10257 H 87.758281 V 106.02339 86.690058 h 5.939583 c 5.730009,0 5.970406,-0.16431 6.813166,-4.65663 1.3499,-7.19556 0.19243,-8.6767 -6.780582,-8.6767 h -6.111526 l 0.403013,-7 c 0.365679,-6.351549 0.711801,-7.034584 3.736346,-7.373278 9.378839,-1.050259 9.501169,-1.167212 9.068209,-8.669248 l -0.40154,-6.957478 -7.558005,-0.39663 C 77.612495,42.15957 70.516619,49.355886 70.454231,65.690058 l -0.02928,7.66667 h -6.666667 -6.666666 v 6.66666 6.66667 h 6.666666 6.666667 v 19.333332 19.33334 H 48.527514 26.630079 Z"
+              />
+            </svg>
           </a>
         </div>
       </div>

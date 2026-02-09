@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="98.666664"
+   height="98.666672"
+   viewBox="0 0 98.666665 98.666673"
+   sodipodi:docname="icons8-tiktok-100.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="6.4125002"
+     inkscape:cx="50.99415"
+     inkscape:cy="50.292396"
+     inkscape:window-width="2560"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="484"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1"
+     transform="translate(-15.773879,-16.397661)">
+    <path
+       style="fill:#000000"
+       d="M 19.876443,110.96176 15.773879,106.8592 V 65.730992 24.602789 l 4.102564,-4.102564 4.102564,-4.102564 h 41.128203 41.12821 l 4.10256,4.102564 4.10256,4.102564 V 65.730992 106.8592 l -4.10256,4.10256 -4.10256,4.10257 H 65.10721 23.979007 Z M 68.829172,98.16078 c 1.986254,-1.47124 4.961371,-4.65854 6.611371,-7.0829 2.726847,-4.00657 3,-5.96818 3,-21.544066 0,-9.424885 0.32111,-17.136155 0.713578,-17.136155 0.392467,0 2.097795,0.906974 3.789616,2.015498 4.648844,3.04604 12.788709,3.179314 14.642636,0.239743 1.231093,-1.952012 1.027753,-2.777577 -1.067337,-4.333333 -1.423495,-1.057049 -3.910042,-1.921908 -5.525659,-1.921908 -3.868682,0 -11.219501,-6.95974 -11.219501,-10.622601 0,-6.636424 -6.514334,-11.172159 -8.524014,-5.935015 -0.445125,1.159978 -0.809319,13.413942 -0.809319,27.231032 0,25.009235 -0.01532,25.140185 -3.413708,29.178945 -9.622909,11.43618 -27.853189,1.41981 -23.181166,-12.73656 1.733435,-5.252357 7.973061,-9.769775 13.505025,-9.777484 3.715811,-0.0052 6.164999,-3.853333 4.336002,-6.812711 -1.509733,-2.4428 -13.078086,-0.634906 -17.897839,2.797061 -4.878973,3.474135 -9.275173,11.994534 -9.31903,18.061474 -0.04744,6.56288 5.302278,15.55453 11.304051,18.99953 6.633582,3.80765 17.470778,3.51596 23.055294,-0.62055 z"
+       id="path1" />
+  </g>
+</svg>
