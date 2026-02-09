@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos | 3D TECH</title>
+
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="assets/images/logo.png"
+            alt="Logo 3D TECH"
+            class="h-10 w-auto"
+          />
+          <span class="text-2xl font-bold text-indigo-600">3D TECH</span>
+        </a>
+
+        <div class="space-x-6 hidden md:block">
+          <a href="index.html#productos" class="hover:text-indigo-600"
+            >Inicio</a
+          >
+          <a href="#catalogo" class="hover:text-indigo-600">Productos</a>
+          <a href="index.html#contacto" class="hover:text-indigo-600"
+            >Contacto</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HEADER -->
+    <section
+      class="pt-28 pb-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+    >
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+          Catálogo de productos 3D
+        </h1>
+        <p class="text-lg max-w-2xl mx-auto">
+          Explora nuestros productos por nicho y cotiza directamente por
+          WhatsApp.
+        </p>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- FILTROS -->
+        <div class="flex justify-center gap-4 mb-12 flex-wrap">
+          <button
+            class="filter-btn px-5 py-2 rounded-full bg-indigo-600 text-white font-semibold"
+            data-filter="all"
+          >
+            Todos
+          </button>
+          <button
+            class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-indigo-100"
+            data-filter="empresarial"
+          >
+            Empresarial
+          </button>
+          <button
+            class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-indigo-100"
+            data-filter="hogar"
+          >
+            Hogar
+          </button>
+          <button
+            class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-indigo-100"
+            data-filter="tecnico"
+          >
+            Técnico
+          </button>
+        </div>
+
+        <!-- GRID PRODUCTOS -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- EMPRESARIAL -->
+          <div
+            class="product-card bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+            data-nicho="empresarial"
+          >
+            <h3 class="text-xl font-semibold mb-2">Llaveros corporativos</h3>
+            <p class="text-gray-600 mb-4">
+              Ideales para marcas, eventos y merchandising.
+            </p>
+            <a
+              href="https://wa.me/573026978100?text=Hola,%20quiero%20cotizar%20llaveros%20corporativos"
+              target="_blank"
+              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+          <div
+            class="product-card bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+            data-nicho="empresarial"
+          >
+            <h3 class="text-xl font-semibold mb-2">Imanes publicitarios</h3>
+            <p class="text-gray-600 mb-4">Publicidad útil para tu marca.</p>
+            <a
+              href="https://wa.me/573026978100?text=Hola,%20quiero%20cotizar%20imanes%20publicitarios"
+              target="_blank"
+              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+          <!-- HOGAR -->
+          <div
+            class="product-card bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+            data-nicho="hogar"
+          >
+            <h3 class="text-xl font-semibold mb-2">Soportes para celular</h3>
+            <p class="text-gray-600 mb-4">Diseño funcional y decorativo.</p>
+            <a
+              href="https://wa.me/573026978100?text=Hola,%20quiero%20cotizar%20un%20soporte%20para%20celular"
+              target="_blank"
+              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+          <div
+            class="product-card bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+            data-nicho="hogar"
+          >
+            <h3 class="text-xl font-semibold mb-2">Organizadores 3D</h3>
+            <p class="text-gray-600 mb-4">
+              Ordena tu espacio con soluciones personalizadas.
+            </p>
+            <a
+              href="https://wa.me/573026978100?text=Hola,%20quiero%20cotizar%20organizadores%203D"
+              target="_blank"
+              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+          <!-- TÉCNICO -->
+          <div
+            class="product-card bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+            data-nicho="tecnico"
+          >
+            <h3 class="text-xl font-semibold mb-2">Piezas técnicas</h3>
+            <p class="text-gray-600 mb-4">
+              Repuestos y soluciones funcionales.
+            </p>
+            <a
+              href="https://wa.me/573026978100?text=Hola,%20quiero%20cotizar%20una%20pieza%20técnica"
+              target="_blank"
+              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+          <div
+            class="product-card bg-white rounded-xl shadow hover:shadow-lg transition p-6 text-center"
+            data-nicho="tecnico"
+          >
+            <h3 class="text-xl font-semibold mb-2">
+              Prototipos personalizados
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Desarrollo de ideas y pruebas funcionales.
+            </p>
+            <a
+              href="https://wa.me/573026978100?text=Hola,%20quiero%20cotizar%20un%20prototipo%203D"
+              target="_blank"
+              class="inline-block bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Cotizar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 py-6 text-center">
+      <p>© 2026 3D TECH. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT FILTRO -->
+    <script>
+      const buttons = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".product-card");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.dataset.filter;
+
+          buttons.forEach((b) =>
+            b.classList.remove("bg-indigo-600", "text-white"),
+          );
+          btn.classList.add("bg-indigo-600", "text-white");
+
+          cards.forEach((card) => {
+            if (filter === "all" || card.dataset.nicho === filter) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
