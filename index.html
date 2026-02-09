@@ -33,12 +33,61 @@
         </a>
 
         <!-- LINKS -->
-        <div class="space-x-6 hidden md:block">
-          <a href="#productos" class="hover:text-indigo-600">Productos</a>
-          <a href="#como-funciona" class="hover:text-indigo-600"
-            >Cómo funciona</a
-          >
-          <a href="#contacto" class="hover:text-indigo-600">Contacto</a>
+        <div class="space-x-6 hidden md:flex items-center">
+          <a href="#como-funciona" class="hover:text-indigo-600">
+            Cómo funciona
+          </a>
+
+          <!-- DROPDOWN PRODUCTOS -->
+          <div class="relative group">
+            <button
+              class="hover:text-indigo-600 font-medium flex items-center gap-1"
+            >
+              Productos
+              <svg
+                class="w-4 h-4 mt-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <!-- SUBMENU -->
+            <div
+              class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20"
+            >
+              <a href="products.html" class="block px-4 py-2 hover:bg-gray-100">
+                Ver todos
+              </a>
+              <a
+                href="products.html?cat=empresarial"
+                class="block px-4 py-2 hover:bg-gray-100"
+              >
+                Empresarial
+              </a>
+              <a
+                href="products.html?cat=hogar"
+                class="block px-4 py-2 hover:bg-gray-100"
+              >
+                Hogar
+              </a>
+              <a
+                href="products.html?cat=tecnico"
+                class="block px-4 py-2 hover:bg-gray-100"
+              >
+                Técnico
+              </a>
+            </div>
+          </div>
+
+          <a href="#contacto" class="hover:text-indigo-600"> Contacto </a>
         </div>
       </div>
     </nav>

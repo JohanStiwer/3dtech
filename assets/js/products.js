@@ -96,3 +96,22 @@ buttons.forEach((btn) => {
     renderProducts(filter);
   });
 });
+
+// ===============================
+// FILTRO DESDE URL (?cat=)
+// ===============================
+const params = new URLSearchParams(window.location.search);
+const categoryFromUrl = params.get("cat");
+
+if (categoryFromUrl) {
+  renderProducts(categoryFromUrl);
+
+  // Activar botón visualmente
+  document.querySelectorAll(".filter-btn").forEach((btn) => {
+    btn.classList.remove("bg-indigo-600", "text-white");
+
+    if (btn.dataset.filter === categoryFromUrl) {
+      btn.classList.add("bg-indigo-600", "text-white");
+    }
+  });
+}
